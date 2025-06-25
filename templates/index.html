@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads or Tails</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #181a20;
+            color: #f5f6fa;
+            font-family: 'Montserrat', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 2.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 16px #000a;
+        }
+        .coin {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 2rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 32px #0008;
+            background: #23242b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flip-btn {
+            background: linear-gradient(90deg, #3a3f47 0%, #23242b 100%);
+            color: #f5f6fa;
+            border: none;
+            border-radius: 30px;
+            padding: 0.8rem 2.2rem;
+            font-size: 1.2rem;
+            font-family: inherit;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            box-shadow: 0 2px 12px #0006;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .flip-btn:hover {
+            background: linear-gradient(90deg, #23242b 0%, #3a3f47 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+        .result {
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+            letter-spacing: 0.08em;
+            min-height: 2.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heads or Tails?</h1>
+    <div class="coin" id="coin">
+        <img id="coin-gif" src="/static/heads.gif" alt="Coin" width="160" height="160" style="border-radius:50%; box-shadow:0 2px 12px #0007;">
+    </div>
+    <button class="flip-btn" onclick="flipCoin()">Flip Coin</button>
+    <div class="result" id="result"></div>
+    <script>
+        const gifs = [
+            '/static/heads.gif',
+            '/static/tails.gif'
+        ];
+        const results = ['Heads', 'Tails'];
+        function flipCoin() {
+            const idx = Math.random() < 0.5 ? 0 : 1;
+            document.getElementById('coin-gif').src = gifs[idx];
+            document.getElementById('result').textContent = results[idx];
+        }
+    </script>
+</body>
+</html>
